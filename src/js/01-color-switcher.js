@@ -21,3 +21,4 @@ const stopColorChange = () => {
 };
 
 startBtn.addEventListener('click', startColorChange);
+stopBtn.addEventListener('click', stopColorChange);
