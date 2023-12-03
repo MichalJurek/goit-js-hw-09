@@ -21,7 +21,7 @@ function convertMs(ms) {
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-  return { day, hours, minutes, seconds };
+  return { days, hours, minutes, seconds };
 }
 
 function addLeadingZero(value) {
