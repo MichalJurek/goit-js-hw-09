@@ -55,3 +55,20 @@ function startCountdown() {
     updateCountdown();
   }, 1000);
 }
+
+flatpickr(datetimePicker, {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] && selectedDates[0] > new Date()) {
+      startButton.disabled = false;
+    } else {
+      alert('Please choose a date in the future.');
+      startButton.disabled = true;
+    }
+  },
+});
+
+startButton.addEventListener('click', startCountdown);
