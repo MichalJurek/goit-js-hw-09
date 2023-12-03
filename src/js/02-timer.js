@@ -6,6 +6,8 @@ const daysElement = document.querySelector('[data-days]');
 const hoursElement = document.querySelector('[data-hours]');
 const minutesElement = document.querySelector('[data-minutes]');
 const secondsElement = document.querySelector('[data-seconds]');
+const datetimePicker = document.querySelector('#datetime-picker');
+const startButton = document.querySelector('[data-start]');
 
 let countdownIntervalId = null;
 
@@ -44,4 +46,12 @@ function updateCountdown() {
   hoursElement.textContent = addLeadingZero(hours);
   minutesElement.textContent = addLeadingZero(minutes);
   secondsElement.textContent = addLeadingZero(seconds);
+}
+
+function startCountdown() {
+  startButton.disabled = true;
+
+  countdownIntervalId = setInterval(() => {
+    updateCountdown();
+  }, 1000);
 }
