@@ -7,9 +7,9 @@ const stopBtn = document.querySelector('[data-stop]');
 
 let colorChangeIntervalId = null;
 
-const startCalorChange = () => {
+const startColorChange = () => {
   colorChangeIntervalId = setInterval(() => {
-    document.body.style.backgroundCOlor = getRandomHexColor();
+    document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 
   startBtn.disabled = true;
@@ -20,4 +20,4 @@ const stopColorChange = () => {
   startBtn.disabled = false;
 };
 
-startBtn.addEventListener('click', startCalorChange);
+startBtn.addEventListener('click', startColorChange);
