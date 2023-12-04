@@ -25,14 +25,10 @@ form.addEventListener('submit', event => {
   for (let i = 1; i <= amount; i++) {
     createPromise(i, delay + step * (i - 1))
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`
-        );
+        Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(
-          `❌ Rejected promise ${position} in ${delay}ms`
-        );
+        Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
       });
   }
 });
