@@ -33,23 +33,24 @@ function updateCountdown() {
   const endDate = new Date(datetimePicker.value).getTime();
   const remainingTime = endDate - now;
 
-if (remainingTime < 0) {
-  clearInterval(countdownIntervalId);
-  Notiflix.Notify.failure('Please choose a date in the future.', {
-    position: 'center',
-  });
-  startButton.disabled = true;
-  return;
+  if (remainingTime < 0) {
+    clearInterval(countdownIntervalId);
+    if (!startButton.disabled) {
+      Notiflix.Notify.failure('Please choose a date in the future.', {
+        position: 'center',
+      });
+      startButton.disabled = true;
+    }
+    return;
   }
 
-  if (timeDifference <= 0) {
-    clearInterval(countdownInterval);
+  if (remainingTime <= 0) {
+    clearInterval(countdownIntervalId);
     daysElement.textContent = '0';
     hoursElement.textContent = '00';
     minutesElement.textContent = '00';
-    secondsE.textContent = '00';
+    secondsElement.textContent = '00';
     startButton.setAttribute('disabled', true);
-
     return;
   }
 
@@ -78,7 +79,9 @@ flatpickr(datetimePicker, {
     if (selectedDates[0] && selectedDates[0] > new Date()) {
       startButton.disabled = false;
     } else {
-      alert('Please choose a date in the future.');
+      Notiflix.Notify.failure('Please choose a date in the future.', {
+        position: 'center',
+      });
       startButton.disabled = true;
     }
   },
