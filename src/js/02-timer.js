@@ -33,10 +33,23 @@ function updateCountdown() {
   const endDate = new Date(datetimePicker.value).getTime();
   const remainingTime = endDate - now;
 
-  if (remainingTime < 0) {
-    clearInterval(countdownIntervalId);
-    alert('Please choose a date in the future.');
-    startButton.disabled = true;
+if (remainingTime < 0) {
+  clearInterval(countdownIntervalId);
+  Notiflix.Notify.failure('Please choose a date in the future.', {
+    position: 'center',
+  });
+  startButton.disabled = true;
+  return;
+  }
+
+  if (timeDifference <= 0) {
+    clearInterval(countdownInterval);
+    daysElement.textContent = '0';
+    hoursElement.textContent = '00';
+    minutesElement.textContent = '00';
+    secondsE.textContent = '00';
+    startButton.setAttribute('disabled', true);
+
     return;
   }
 
